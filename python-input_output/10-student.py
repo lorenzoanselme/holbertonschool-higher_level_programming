@@ -37,9 +37,6 @@ class Student:
         """
         if attrs is None:
             return self.__dict__
-        
-        result = {}
-        for attr in attrs:
-            if isinstance(attr, str) and hasattr(self, attr):
-                result[attr] = getattr(self, attr)
-        return result
+        else:
+            return {attr: getattr(self, attr) for attr in attrs if
+                    hasattr(self, attr)}
