@@ -13,7 +13,6 @@ URL = "https://jsonplaceholder.typicode.com/posts"
 def fetch_and_print_posts():
     """
     Fetches posts from the API and prints their titles.
-    If the request fails, it prints "Status Code: None".
     """
     response = requests.get(URL)
 
@@ -43,7 +42,7 @@ def fetch_and_save_posts():
                 "body": post["body"]
             })
 
-        with open("post.csv", "w", newline="") as file:
+        with open("posts.csv", "w", newline="") as file:
             writer = csv.DictWriter(file, fieldnames=["id", "title", "body"])
             writer.writeheader()
             writer.writerows(data)
