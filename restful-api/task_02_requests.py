@@ -29,7 +29,6 @@ def fetch_and_print_posts():
 def fetch_and_save_posts():
     """
     Fetches posts from the API and saves them to a CSV file.
-    If the request fails, it prints "Status Code: None".
     """
     response = requests.get(URL)
 
@@ -45,6 +44,6 @@ def fetch_and_save_posts():
             })
 
         with open("post.csv", "w", newline="") as file:
-            writer = csv.DictWriter(file, filenames=["id", "title", "body"])
+            writer = csv.DictWriter(file, fieldnames=["id", "title", "body"])
             writer.writeheader()
-            writer.writerow(data)
+            writer.writerows(data)
